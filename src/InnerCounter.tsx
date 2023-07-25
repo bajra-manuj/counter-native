@@ -1,4 +1,4 @@
-import {Button, Text, View} from 'react-native';
+import {Button, StyleSheet, Text, View} from 'react-native';
 
 type InnerCounterProps = {
   count: Number;
@@ -12,10 +12,43 @@ export default function InnerCounter({
   decCount,
 }: InnerCounterProps) {
   return (
-    <View>
-      <Text>Count: {count}</Text>
-      <Button title="Increase Count" onPress={incCount} />
-      <Button title="Decrease Count" onPress={decCount} />
+    <View style={styles.container}>
+      <Text style={styles.timer}>Count: {count}</Text>
+      <View style={styles.buttonContainer}>
+        <Button
+          style={styles.button}
+          title="Increase Count"
+          onPress={incCount}
+        />
+        <Button
+          style={styles.button}
+          title="Decrease Count"
+          onPress={decCount}
+        />
+      </View>
     </View>
   );
 }
+
+const styles = StyleSheet.create({
+  container: {
+    height: '100%',
+  },
+  timer: {
+    position: 'absolute',
+    width: '100%',
+    top: '45%',
+    textAlign: 'center',
+    color: 'black',
+    fontSize: 45,
+  },
+  buttonContainer: {
+    display: 'flex',
+    position: 'absolute',
+    width: '100%',
+    gap: 5,
+    bottom: '1%',
+    padding: '2%',
+  },
+  button: {},
+});
